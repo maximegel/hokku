@@ -1,0 +1,40 @@
+// Development container configuration,
+// see https://code.visualstudio.com/docs/remote/devcontainerjson-reference
+{
+  "name": "Ubuntu",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      // Update 'VARIANT' to pick an Ubuntu version.
+      "VARIANT": "ubuntu-22.04"
+    }
+  },
+  // Comment out to connect as root instead.
+  // More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "vscode",
+  // Add dev container features and related options to the container.
+  // More info: https://code.visualstudio.com/docs/remote/containers#_dev-container-features-preview
+  "features": {
+    "git": "os-provided",
+    "github-cli": "latest",
+    "node": "latest",
+    "golang": "latest",
+    "java": "latest"
+  },
+  // Add Visual Studio Code extension IDs of extensions that should be installed
+  // inside the container when created.
+  "extensions": [
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "golang.go",
+    "mhutchie.git-graph"
+  ],
+  // Set `settings.json` values that will added to the container/machine
+  // specific settings file.
+  "settings": {},
+  // Use lifecycle scripts to run commands at different points in the
+  // container's lifecycle
+  "postCreateCommand": "zsh ./.devcontainer/lifecycle-scripts/post-create.sh",
+  "postStartCommand": "zsh ./.devcontainer/lifecycle-scripts/post-start.sh"
+}
