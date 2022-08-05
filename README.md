@@ -1,2 +1,3 @@
-# hokku
+# Hokku
+
 The Hokku Programming Language
